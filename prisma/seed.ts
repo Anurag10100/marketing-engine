@@ -1,46 +1,33 @@
 import { PrismaClient } from "@prisma/client";
-import {
-  DEFAULT_CORE_PROMPT,
-  DEFAULT_VERTICAL_CONTEXTS,
-} from "../lib/brain-defaults";
+import { DEFAULT_BRAIN, DEFAULT_VERTICALS } from "../lib/brain-defaults";
 
 const prisma = new PrismaClient();
 
 async function main() {
-  // Seed Brand Brain if not exists
-  const existingBrain = await prisma.brandBrain.findFirst();
-  if (!existingBrain) {
-    await prisma.brandBrain.create({
-      data: {
-        corePrompt: DEFAULT_CORE_PROMPT,
-        version: 1,
-      },
-    });
-    console.log("✓ Brand Brain seeded");
-  } else {
-    console.log("→ Brand Brain already exists, skipping");
+  // Only seed if no brain exists
+  const existing = await prisma.brandBrain.count();
+  if (existing > 0) {
+    console.log("Brain already seeded — skipping");
+    return;
   }
 
-  // Seed Vertical Contexts
-  for (const vc of DEFAULT_VERTICAL_CONTEXTS) {
-    await prisma.verticalContext.upsert({
-      where: { vertical: vc.vertical },
-      update: {},
-      create: {
-        vertical: vc.vertical,
-        content: vc.content,
-      },
+  // Create Brand Brain
+  await prisma.brandBrain.create({
+    data: { corePrompt: DEFAULT_BRAIN, version: 1 },
+  });
+
+  // Create vertical contexts
+  for (const [vertical, content] of Object.entries(DEFAULT_VERTICALS)) {
+    await prisma.verticalContext.create({
+      data: { vertical, content },
     });
   }
-  console.log(`✓ ${DEFAULT_VERTICAL_CONTEXTS.length} Vertical Contexts seeded`);
+
+  console.log("Brain seeded successfully");
 }
 
 main()
-  .then(async () => {
-    await prisma.$disconnect();
-  })
-  .catch(async (e) => {
-    console.error(e);
-    await prisma.$disconnect();
-    process.exit(1);
-  });
+  .catch(console.error)
+  .finally(() => prisma.$disconnect());
+
+// Run with: npx prisma db seed
