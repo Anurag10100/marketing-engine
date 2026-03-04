@@ -1,0 +1,127 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  image     String?
+  role      Role     @default(MEMBER)
+  createdAt DateTime @default(now())
+
+  learnings Learning[]
+  outputs   Output[]
+  accounts  Account[]
+  sessions  Session[]
+}
+
+enum Role {
+  ADMIN
+  MEMBER
+}
+
+// The Brand Brain — one row per organisation (single-tenant for now)
+model BrandBrain {
+  id         String   @id @default(cuid())
+  corePrompt String   @db.Text // Master brand prompt
+  version    Int      @default(1)
+  updatedAt  DateTime @updatedAt
+  updatedBy  String?
+}
+
+// Vertical-specific context — one row per vertical
+model VerticalContext {
+  id        String   @id @default(cuid())
+  vertical  String   @unique // "BFSI", "Healthcare", etc.
+  content   String   @db.Text
+  updatedAt DateTime @updatedAt
+  updatedBy String?
+}
+
+// Every learning fed into the system
+model Learning {
+  id        String       @id @default(cuid())
+  vertical  String // "BFSI" | "All" | etc.
+  type      LearningType
+  content   String       @db.Text
+  createdAt DateTime     @default(now())
+  createdBy String
+  user      User         @relation(fields: [createdBy], references: [id])
+
+  @@index([vertical])
+  @@index([type])
+  @@index([createdAt])
+}
+
+enum LearningType {
+  PERFORMANCE // Campaign performance data
+  EVENT_INSIGHT // Post-event observations
+  AUDIENCE_FEEDBACK // Feedback from delegates/sponsors
+  TONE_CORRECTION // Voice/tone adjustments
+  WHAT_WORKED // Positive pattern to reinforce
+  WHAT_FAILED // Negative pattern to avoid
+  MANUAL_UPDATE // Direct brand knowledge update
+}
+
+// Every generation output — for history and pattern analysis
+model Output {
+  id            String   @id @default(cuid())
+  vertical      String
+  taskType      String
+  contextInput  String   @db.Text // What the user typed
+  systemPrompt  String   @db.Text // Full prompt used
+  outputText    String   @db.Text // Claude's response
+  learningsUsed Int // How many learnings were applied
+  rating        Int? // 1-5 star user rating (optional)
+  ratingNote    String? // Optional note on rating
+  createdAt     DateTime @default(now())
+  createdBy     String
+  user          User     @relation(fields: [createdBy], references: [id])
+
+  @@index([vertical])
+  @@index([taskType])
+  @@index([createdAt])
+}
+
+// NextAuth required models
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
