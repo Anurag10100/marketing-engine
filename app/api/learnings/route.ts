@@ -4,6 +4,8 @@ import { z } from "zod/v4";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 
+export const dynamic = "force-dynamic";
+
 const CreateLearningSchema = z.object({
   vertical: z.string().min(1),
   type: z.string().min(1),
