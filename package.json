@@ -2,6 +2,10 @@
   "name": "elets-brand-engine",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.29.3",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",
