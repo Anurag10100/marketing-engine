@@ -8,7 +8,7 @@ import { Card } from "@/components/ui/Card";
 import { Spinner } from "@/components/ui/Spinner";
 import { VERTICALS, TASK_TYPES } from "@/lib/constants";
 import { Star, Copy, Check, Download, ChevronDown, ChevronUp } from "lucide-react";
-import type { OutputRecord } from "@/types";
+import type { Output } from "@/types";
 
 export default function HistoryPage() {
   const [filterVertical, setFilterVertical] = useState("");
@@ -17,7 +17,7 @@ export default function HistoryPage() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
-  const { data: outputs, isLoading } = useQuery<OutputRecord[]>({
+  const { data: outputs, isLoading } = useQuery<Output[]>({
     queryKey: ["outputs", filterVertical, filterTaskType, filterRating],
     queryFn: async () => {
       const params = new URLSearchParams();
@@ -74,7 +74,7 @@ export default function HistoryPage() {
         <Select
           options={[
             { value: "", label: "All Verticals" },
-            ...VERTICALS.filter((v) => v.value !== "All").map((v) => ({
+            ...VERTICALS.map((v) => ({
               value: v.value,
               label: v.label,
             })),

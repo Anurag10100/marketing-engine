@@ -12,7 +12,7 @@ interface VerticalSelectorProps {
 export function VerticalSelector({
   value,
   onChange,
-  exclude = ["All"],
+  exclude = [],
 }: VerticalSelectorProps) {
   const filtered = VERTICALS.filter((v) => !exclude.includes(v.value));
 

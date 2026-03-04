@@ -3,11 +3,11 @@
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { LEARNING_TYPES } from "@/lib/constants";
-import type { LearningRecord } from "@/types";
+import type { Learning } from "@/types";
 
 interface VerticalCardProps {
   vertical: string;
-  learnings: LearningRecord[];
+  learnings: Learning[];
 }
 
 export function VerticalCard({ vertical, learnings }: VerticalCardProps) {

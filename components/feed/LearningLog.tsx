@@ -3,10 +3,10 @@
 import { Trash2 } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { LEARNING_TYPES } from "@/lib/constants";
-import type { LearningRecord } from "@/types";
+import type { Learning } from "@/types";
 
 interface LearningLogProps {
-  learnings: LearningRecord[];
+  learnings: Learning[];
   isAdmin: boolean;
   onDelete: (id: string) => void;
 }

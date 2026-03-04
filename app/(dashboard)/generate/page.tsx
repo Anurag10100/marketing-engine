@@ -10,7 +10,7 @@ import { ContextInput } from "@/components/generate/ContextInput";
 import { GenerateButton } from "@/components/generate/GenerateButton";
 import { OutputPanel } from "@/components/generate/OutputPanel";
 import { LearningsAppliedBadge } from "@/components/generate/LearningsAppliedBadge";
-import type { OutputRecord } from "@/types";
+import type { Output } from "@/types";
 
 export default function GeneratePage() {
   const { activeVertical, setActiveVertical, activeTaskType, setActiveTaskType } =
@@ -19,7 +19,7 @@ export default function GeneratePage() {
   const [outputText, setOutputText] = useState("");
   const [outputId, setOutputId] = useState<string | null>(null);
   const [recentOutputs, setRecentOutputs] = useState<
-    Pick<OutputRecord, "id" | "vertical" | "taskType" | "outputText" | "createdAt">[]
+    Pick<Output, "id" | "vertical" | "taskType" | "outputText" | "createdAt">[]
   >([]);
 
   const generate = useGenerate();

@@ -5,7 +5,7 @@ import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { anthropic, buildSystemPrompt } from "@/lib/anthropic";
 import { USER_MESSAGE_TEMPLATES } from "@/lib/constants";
-import type { TaskType, LearningRecord } from "@/types";
+import type { TaskType, Learning } from "@/types";
 
 const GenerateSchema = z.object({
   vertical: z.string().min(1),
@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
 
     // 5. Fetch Learnings
     const learnings = await prisma.learning.findMany({
-      where: { vertical: { in: [vertical, "All"] } },
+      where: { vertical },
       orderBy: { createdAt: "desc" },
       take: 40,
     });
@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
       learnings.map((l) => ({
         id: l.id,
         vertical: l.vertical,
-        type: l.type as LearningRecord["type"],
+        type: l.type as Learning["type"],
         content: l.content,
         createdAt: l.createdAt.toISOString(),
         createdBy: l.createdBy,

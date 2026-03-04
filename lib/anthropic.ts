@@ -1,5 +1,5 @@
 import Anthropic from "@anthropic-ai/sdk";
-import type { LearningRecord } from "@/types";
+import type { Learning } from "@/types";
 
 export const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
@@ -25,7 +25,7 @@ export function buildSystemPrompt(
   corePrompt: string,
   verticalContext: string,
   vertical: string,
-  learnings: LearningRecord[]
+  learnings: Learning[]
 ): string {
   const byType = groupBy(learnings, "type");
 
@@ -50,7 +50,7 @@ export function buildSystemPrompt(
 // ── buildLearningsSection ────────────────────────────────────────
 
 function buildLearningsSection(
-  byType: Record<string, LearningRecord[]>,
+  byType: Record<string, Learning[]>,
   vertical: string
 ): string {
   const lines: string[] = [

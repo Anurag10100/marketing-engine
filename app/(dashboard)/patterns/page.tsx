@@ -9,12 +9,12 @@ import { Spinner } from "@/components/ui/Spinner";
 import { Card } from "@/components/ui/Card";
 import { Rss } from "lucide-react";
 import Link from "next/link";
-import type { OutputRecord } from "@/types";
+import type { Output } from "@/types";
 
 export default function PatternsPage() {
   const { data: learnings, isLoading } = useLearnings({ limit: 500 });
 
-  const { data: outputs } = useQuery<OutputRecord[]>({
+  const { data: outputs } = useQuery<Output[]>({
     queryKey: ["outputs", "all"],
     queryFn: async () => {
       const res = await fetch("/api/outputs?limit=100");
@@ -61,9 +61,7 @@ export default function PatternsPage() {
     byVertical[l.vertical].push(l);
   });
 
-  const verticalsActive = Object.keys(byVertical).filter(
-    (v) => v !== "All"
-  ).length;
+  const verticalsActive = Object.keys(byVertical).length;
   const performanceCount = learnings.filter(
     (l) => l.type === "PERFORMANCE"
   ).length;
@@ -88,7 +86,6 @@ export default function PatternsPage() {
 
       <div className="grid gap-4 md:grid-cols-2">
         {Object.entries(byVertical)
-          .filter(([v]) => v !== "All")
           .map(([vertical, vLearnings]) => (
             <VerticalCard
               key={vertical}

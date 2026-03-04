@@ -1,12 +1,12 @@
 "use client";
 
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import type { BrainResponse } from "@/types";
+import type { BrainData } from "@/types";
 
 export function useBrain() {
   const queryClient = useQueryClient();
 
-  const query = useQuery<BrainResponse>({
+  const query = useQuery<BrainData>({
     queryKey: ["brain"],
     queryFn: async () => {
       const res = await fetch("/api/brain");

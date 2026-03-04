@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import type { LearningRecord } from "@/types";
+import type { Learning } from "@/types";
 
 type LearningsParams = {
   vertical?: string;
@@ -12,7 +12,7 @@ type LearningsParams = {
 export function useLearnings(params: LearningsParams = {}) {
   const queryClient = useQueryClient();
 
-  const query = useQuery<LearningRecord[]>({
+  const query = useQuery<Learning[]>({
     queryKey: ["learnings", params],
     queryFn: async () => {
       const searchParams = new URLSearchParams();

@@ -54,6 +54,18 @@ TONE: Empathetic yet authoritative. Balance technology with patient outcomes. Re
 
 KEY RELATIONSHIPS: NHA, AIIMS, Apollo, Fortis, Max Healthcare, leading healthtech startups.`,
 
+  "Smart Cities": `Smart Cities vertical covers urban transformation, smart infrastructure, and city-level digital governance.
+
+KEY THEMES: Smart Cities Mission, urban mobility, IoT-enabled city services, waste management tech, smart water management, intelligent traffic systems, green buildings, urban data platforms.
+
+AUDIENCE: Municipal commissioners, smart city CEOs, urban development secretaries, city planners, infrastructure fund managers, PropTech founders.
+
+FLAGSHIP EVENTS: Smart City Summit, Urban Transformation Summit.
+
+TONE: Project-focused and outcome-driven. Use specific metrics — cities covered, investment amounts, citizen impact numbers. Reference Smart Cities Mission and AMRUT accurately.
+
+KEY RELATIONSHIPS: Smart Cities Mission, MoHUA, state urban development departments, leading smart city SPVs, metro corporations.`,
+
   Education: `Education vertical covers K-12, higher education, EdTech, and skill development.
 
 KEY THEMES: NEP 2020 implementation, digital classrooms, hybrid learning, skill development, university rankings, EdTech innovation, vocational training, research excellence.
@@ -66,39 +78,39 @@ TONE: Progressive and inclusive. Reference NEP 2020, UGC guidelines, AICTE frame
 
 KEY RELATIONSHIPS: UGC, AICTE, leading universities, CBSE, state education departments.`,
 
-  Government: `Government vertical covers e-governance, smart cities, and digital government initiatives.
+  "eGov / Digital India": `eGov / Digital India vertical covers e-governance, digital government initiatives, and citizen service delivery.
 
-KEY THEMES: Digital India, e-governance, smart cities mission, citizen services, GovTech, data governance, public service delivery, Jan Dhan-Aadhaar-Mobile (JAM) trinity.
+KEY THEMES: Digital India programme, e-governance frameworks, citizen services digitisation, GovTech, data governance, public service delivery, Jan Dhan-Aadhaar-Mobile (JAM) trinity, DigiLocker, UMANG.
 
-AUDIENCE: Government secretaries, district magistrates, municipal commissioners, NIC officials, smart city CEOs, state IT secretaries.
+AUDIENCE: Government secretaries, district magistrates, NIC officials, state IT secretaries, GovTech founders, public policy researchers.
 
-FLAGSHIP EVENTS: Governance Leadership Summit, Smart City Summit, eGov Summit.
+FLAGSHIP EVENTS: Governance Leadership Summit, eGov Summit, Digital India Summit.
 
 TONE: Respectful of government protocols. Use correct designations and hierarchies. Reference government schemes accurately with correct ministry attributions.
 
-KEY RELATIONSHIPS: MeitY, NIC, NASSCOM, Smart Cities Mission, state IT departments.`,
+KEY RELATIONSHIPS: MeitY, NIC, NASSCOM, NeGD, state IT departments.`,
 
-  Infrastructure: `Infrastructure covers urban development, real estate, construction tech, and logistics.
+  "Security & Defence": `Security & Defence vertical covers national security, defence modernisation, and cybersecurity.
 
-KEY THEMES: Smart infrastructure, green buildings, urban mobility, logistics tech, construction technology, affordable housing, PMAY, metro rail, highway development.
+KEY THEMES: Defence modernisation, Make in India for defence, cybersecurity frameworks, border security tech, surveillance systems, defence procurement, homeland security, critical infrastructure protection.
 
-AUDIENCE: Real estate CEOs, urban development secretaries, infrastructure fund managers, construction tech founders, logistics heads.
+AUDIENCE: Defence officials, DRDO scientists, cybersecurity leaders, defence PSU heads, security startup founders, intelligence community stakeholders.
 
-FLAGSHIP EVENTS: Infrastructure Leadership Summit, Real Estate Summit.
+FLAGSHIP EVENTS: Defence & Security Leadership Summit, Cybersecurity Summit.
 
-TONE: Project-focused and outcome-driven. Use specific metrics — km of roads, units delivered, investment amounts. Reference government infrastructure schemes accurately.
+TONE: Precise and authoritative. Respect classification sensitivities. Reference defence procurement policies, DRDO frameworks, and MoD guidelines accurately.
 
-KEY RELATIONSHIPS: NHAI, state PWDs, leading real estate developers, metro corporations.`,
+KEY RELATIONSHIPS: MoD, DRDO, BEL, HAL, defence PSUs, leading defence tech companies.`,
 
-  Technology: `Technology is a cross-cutting vertical that touches all other sectors.
+  "AI & Emerging Tech": `AI & Emerging Tech is a cross-cutting vertical that touches all other sectors.
 
-KEY THEMES: AI/ML, cloud computing, cybersecurity, 5G, IoT, blockchain, quantum computing, semiconductor manufacturing, startup ecosystem, digital transformation.
+KEY THEMES: AI/ML, generative AI, cloud computing, cybersecurity, 5G, IoT, blockchain, quantum computing, semiconductor manufacturing, startup ecosystem, digital transformation, responsible AI.
 
-AUDIENCE: CIOs, CTOs, IT secretaries, tech startup founders, venture capitalists, cloud and cybersecurity leaders.
+AUDIENCE: CIOs, CTOs, AI researchers, tech startup founders, venture capitalists, cloud and cybersecurity leaders, data scientists.
 
-FLAGSHIP EVENTS: Technology Leadership Summit, CIO Summit, Cybersecurity Summit.
+FLAGSHIP EVENTS: AI Leadership Summit, Technology Leadership Summit, CIO Summit.
 
-TONE: Technically credible but accessible. Avoid vendor-specific language unless referencing specific case studies. Balance hype with practicality.
+TONE: Technically credible but accessible. Avoid vendor-specific language unless referencing specific case studies. Balance hype with practicality. Emphasise real-world applications over theoretical possibilities.
 
-KEY RELATIONSHIPS: NASSCOM, MeitY, leading IT companies, startup incubators, VC firms.`,
+KEY RELATIONSHIPS: NASSCOM, MeitY, IndiaAI, leading IT companies, startup incubators, VC firms, IITs and research institutions.`,
 };

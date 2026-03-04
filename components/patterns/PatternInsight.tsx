@@ -2,10 +2,10 @@
 
 import { Card } from "@/components/ui/Card";
 import { TrendingUp } from "lucide-react";
-import type { LearningRecord } from "@/types";
+import type { Learning } from "@/types";
 
 interface PatternInsightProps {
-  learnings: LearningRecord[];
+  learnings: Learning[];
 }
 
 export function PatternInsight({ learnings }: PatternInsightProps) {

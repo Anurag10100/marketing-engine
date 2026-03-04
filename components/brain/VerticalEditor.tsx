@@ -5,10 +5,10 @@ import { VERTICALS } from "@/lib/constants";
 import { Textarea } from "@/components/ui/Textarea";
 import { Button } from "@/components/ui/Button";
 import { Save } from "lucide-react";
-import type { VerticalContextData } from "@/types";
+import type { VerticalContext } from "@/types";
 
 interface VerticalEditorProps {
-  verticals: VerticalContextData[];
+  verticals: VerticalContext[];
   isAdmin: boolean;
   onSave: (vertical: string, content: string) => void;
   saving?: boolean;
@@ -41,7 +41,7 @@ export function VerticalEditor({
     [isAdmin, onSave, selected]
   );
 
-  const filteredVerticals = VERTICALS.filter((v) => v.value !== "All");
+  const filteredVerticals = VERTICALS;
 
   return (
     <div className="space-y-4">

@@ -3,14 +3,14 @@
 import {
   Linkedin,
   Mail,
-  CalendarPlus,
   Newspaper,
-  MessageSquare,
   FileText,
   Smartphone,
   Mic,
   Handshake,
   ClipboardCheck,
+  Globe,
+  Pencil,
 } from "lucide-react";
 import { TASK_TYPES } from "@/lib/constants";
 import type { TaskType } from "@/types";
@@ -18,14 +18,14 @@ import type { TaskType } from "@/types";
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Linkedin,
   Mail,
-  CalendarPlus,
   Newspaper,
-  MessageSquare,
   FileText,
   Smartphone,
   Mic,
   Handshake,
   ClipboardCheck,
+  Globe,
+  Pencil,
 };
 
 interface TaskTypeGridProps {

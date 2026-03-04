@@ -17,7 +17,7 @@ interface LearningFormProps {
 }
 
 export function LearningForm({ onSubmit, loading }: LearningFormProps) {
-  const [vertical, setVertical] = useState<Vertical>("All");
+  const [vertical, setVertical] = useState<Vertical>("BFSI");
   const [type, setType] = useState<LearningType>("WHAT_WORKED");
   const [content, setContent] = useState("");
   const [success, setSuccess] = useState(false);

@@ -1,27 +1,25 @@
-// ── Shared TypeScript Types ─────────────────────────────────────
-
-export type Role = "ADMIN" | "MEMBER";
+// types/index.ts — all shared types
 
 export type Vertical =
   | "BFSI"
   | "Healthcare"
+  | "Smart Cities"
   | "Education"
-  | "Government"
-  | "Infrastructure"
-  | "Technology"
-  | "All";
+  | "eGov / Digital India"
+  | "Security & Defence"
+  | "AI & Emerging Tech";
 
 export type TaskType =
   | "linkedin_post"
   | "email_announcement"
-  | "event_invite"
-  | "newsletter_section"
-  | "social_media_thread"
+  | "speaker_announcement"
+  | "sponsor_email"
+  | "event_landing"
   | "press_release"
   | "whatsapp_broadcast"
-  | "speaker_intro"
-  | "sponsor_pitch"
-  | "post_event_summary";
+  | "post_event_pack"
+  | "newsletter_section"
+  | "custom";
 
 export type LearningType =
   | "PERFORMANCE"
@@ -32,23 +30,9 @@ export type LearningType =
   | "WHAT_FAILED"
   | "MANUAL_UPDATE";
 
-// ── API Types ───────────────────────────────────────────────────
+export type UserRole = "ADMIN" | "MEMBER";
 
-export type GenerateRequest = {
-  vertical: string;
-  taskType: string;
-  contextInput: string;
-};
-
-export type GenerateResponse = {
-  outputText: string;
-  learningsUsed: number;
-  outputId: string;
-};
-
-// ── Data Types ──────────────────────────────────────────────────
-
-export type LearningRecord = {
+export interface Learning {
   id: string;
   vertical: string;
   type: LearningType;
@@ -56,43 +40,44 @@ export type LearningRecord = {
   createdAt: string;
   createdBy: string;
   user?: { name: string | null };
-};
+}
 
-export type OutputRecord = {
+export interface Output {
   id: string;
   vertical: string;
   taskType: string;
   contextInput: string;
-  systemPrompt: string;
   outputText: string;
   learningsUsed: number;
   rating: number | null;
   ratingNote: string | null;
   createdAt: string;
-  createdBy: string;
   user?: { name: string | null };
-};
+}
 
-export type BrandBrainData = {
-  id: string;
+export interface BrainData {
   corePrompt: string;
   version: number;
   updatedAt: string;
   updatedBy: string | null;
-};
+  verticals: VerticalContext[];
+}
 
-export type VerticalContextData = {
-  id: string;
+export interface VerticalContext {
   vertical: string;
   content: string;
   updatedAt: string;
-  updatedBy: string | null;
-};
+  updatedBy?: string | null;
+}
 
-export type BrainResponse = {
-  corePrompt: string;
-  version: number;
-  updatedAt: string;
-  updatedBy: string | null;
-  verticals: VerticalContextData[];
-};
+export interface GenerateRequest {
+  vertical: string;
+  taskType: TaskType;
+  contextInput: string;
+}
+
+export interface GenerateResponse {
+  outputText: string;
+  learningsUsed: number;
+  outputId: string;
+}
