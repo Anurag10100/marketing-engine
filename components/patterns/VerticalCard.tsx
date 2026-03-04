@@ -11,13 +11,11 @@ interface VerticalCardProps {
 }
 
 export function VerticalCard({ vertical, learnings }: VerticalCardProps) {
-  // Breakdown by type
   const byType: Record<string, number> = {};
   learnings.forEach((l) => {
     byType[l.type] = (byType[l.type] || 0) + 1;
   });
 
-  // Top 3 "what worked"
   const whatWorked = learnings
     .filter((l) => l.type === "WHAT_WORKED")
     .slice(0, 3);
@@ -25,8 +23,10 @@ export function VerticalCard({ vertical, learnings }: VerticalCardProps) {
   return (
     <Card>
       <div className="mb-4 flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-zinc-100">{vertical}</h3>
-        <span className="text-sm text-zinc-500">
+        <h3 className="font-mono text-sm font-semibold uppercase tracking-wider text-text-primary">
+          {vertical}
+        </h3>
+        <span className="font-mono text-[11px] text-text-muted">
           {learnings.length} learning{learnings.length !== 1 ? "s" : ""}
         </span>
       </div>
@@ -43,12 +43,12 @@ export function VerticalCard({ vertical, learnings }: VerticalCardProps) {
       </div>
 
       {whatWorked.length > 0 && (
-        <div className="space-y-2">
-          <p className="text-xs font-medium text-zinc-500 uppercase">
+        <div className="space-y-2 border-t border-border-default pt-3">
+          <p className="font-mono text-[11px] font-medium uppercase tracking-wider text-text-muted">
             Top what worked
           </p>
           {whatWorked.map((l) => (
-            <p key={l.id} className="text-sm text-zinc-300">
+            <p key={l.id} className="text-sm text-text-secondary">
               {l.content}
             </p>
           ))}

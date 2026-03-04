@@ -22,10 +22,10 @@ export function VerticalSelector({
         <button
           key={v.value}
           onClick={() => onChange(v.value)}
-          className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+          className={`rounded-chip px-4 py-1.5 font-mono text-xs font-medium uppercase tracking-wider transition-all duration-200 ${
             value === v.value
-              ? "bg-amber-500 text-zinc-900"
-              : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-zinc-100"
+              ? "bg-accent text-bg-primary"
+              : "bg-bg-surface text-text-muted border border-border-default hover:border-border-active hover:text-text-primary"
           }`}
         >
           {v.label}

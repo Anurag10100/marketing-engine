@@ -18,29 +18,31 @@ export function LearningLog({
 }: LearningLogProps) {
   if (learnings.length === 0) {
     return (
-      <div className="flex min-h-[200px] items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900 text-zinc-500">
-        No learnings yet. Add your first one!
+      <div className="flex min-h-[200px] items-center justify-center rounded-card border border-border-default bg-bg-surface">
+        <p className="font-mono text-xs uppercase tracking-wider text-text-disabled">
+          No learnings yet
+        </p>
       </div>
     );
   }
 
   return (
     <div className="space-y-3">
-      {learnings.map((learning) => {
+      {learnings.map((learning, index) => {
         const typeInfo = LEARNING_TYPES.find(
           (t) => t.value === learning.type
         );
         return (
           <div
             key={learning.id}
-            className="group rounded-lg border border-zinc-800 bg-zinc-900 p-4"
+            className={`group rounded-[6px] border border-border-default bg-bg-surface p-4 transition-colors duration-200 hover:border-border-active ${
+              index === 0 ? "animate-fade-in-down" : ""
+            }`}
           >
             <div className="mb-2 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Badge color={typeInfo?.color}>{typeInfo?.label}</Badge>
-                <Badge className="bg-zinc-800 text-zinc-400">
-                  {learning.vertical}
-                </Badge>
+                <Badge>{learning.vertical}</Badge>
               </div>
               {isAdmin && (
                 <button
@@ -49,16 +51,15 @@ export function LearningLog({
                       onDelete(learning.id);
                     }
                   }}
-                  className="rounded p-1 text-zinc-600 opacity-0 transition-opacity hover:text-red-500 group-hover:opacity-100"
+                  className="rounded-[4px] p-1 text-text-disabled opacity-0 transition-all duration-200 hover:text-danger group-hover:opacity-100"
                 >
                   <Trash2 className="h-4 w-4" />
                 </button>
               )}
             </div>
-            <p className="text-sm text-zinc-300">{learning.content}</p>
-            <p className="mt-2 text-xs text-zinc-600">
-              {new Date(learning.createdAt).toLocaleDateString()} by{" "}
-              {learning.user?.name ?? "Unknown"}
+            <p className="text-sm text-text-primary">{learning.content}</p>
+            <p className="mt-2 font-mono text-[11px] text-text-muted">
+              {new Date(learning.createdAt).toLocaleDateString()} — {learning.user?.name ?? "Unknown"}
             </p>
           </div>
         );

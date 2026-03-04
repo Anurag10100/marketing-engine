@@ -22,10 +22,12 @@ export function GenerateButton({
       disabled={disabled}
       loading={loading}
       size="lg"
-      className="w-full"
+      className="btn-generate w-full font-mono uppercase tracking-wider"
     >
       {loading ? (
-        <>Generating with {learningsCount} learnings...</>
+        <span className="processing-text animate-pulse-amber">
+          Brand Engine Processing — {learningsCount} learnings applied
+        </span>
       ) : (
         <>
           <Sparkles className="h-4 w-4" />

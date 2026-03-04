@@ -33,7 +33,7 @@ export function CoreBrainEditor({
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-zinc-100">
+        <h3 className="font-mono text-sm font-semibold uppercase tracking-wider text-text-primary">
           Core Brand Knowledge
         </h3>
         {isAdmin && (
@@ -56,10 +56,10 @@ export function CoreBrainEditor({
         className="min-h-[400px] font-mono text-sm"
       />
 
-      <p className="text-xs text-zinc-500">
-        Version {version}
-        {updatedAt && ` — last updated ${new Date(updatedAt).toLocaleDateString()}`}
-        {updatedBy && ` by ${updatedBy}`}
+      <p className="font-mono text-[11px] text-text-muted">
+        v{version}
+        {updatedAt && ` — ${new Date(updatedAt).toLocaleDateString()}`}
+        {updatedBy && ` — ${updatedBy}`}
       </p>
     </div>
   );

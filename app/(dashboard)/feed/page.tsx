@@ -36,9 +36,7 @@ export default function FeedPage() {
       `"${l.content.replace(/"/g, '""')}"`,
       l.createdAt,
     ]);
-    const csv = [headers.join(","), ...rows.map((r) => r.join(","))].join(
-      "\n"
-    );
+    const csv = [headers.join(","), ...rows.map((r) => r.join(","))].join("\n");
     const blob = new Blob([csv], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -50,8 +48,6 @@ export default function FeedPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-zinc-100">Learning Feed</h1>
-
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Left: Form */}
         <div>

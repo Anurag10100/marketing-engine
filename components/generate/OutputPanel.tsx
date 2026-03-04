@@ -23,8 +23,10 @@ export function OutputPanel({ outputText, outputId, onRate }: OutputPanelProps) 
 
   if (!outputText) {
     return (
-      <Card className="flex min-h-[300px] items-center justify-center text-zinc-500">
-        <p>Generated content will appear here</p>
+      <Card className="flex min-h-[300px] items-center justify-center">
+        <p className="font-mono text-xs uppercase tracking-wider text-text-disabled">
+          Generated content will appear here
+        </p>
       </Card>
     );
   }
@@ -33,22 +35,24 @@ export function OutputPanel({ outputText, outputId, onRate }: OutputPanelProps) 
     <Card className="relative">
       <button
         onClick={handleCopy}
-        className="absolute right-4 top-4 rounded-lg p-2 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100"
+        className="absolute right-4 top-4 rounded-[6px] p-2 text-text-muted transition-colors duration-200 hover:bg-bg-elevated hover:text-text-primary"
       >
         {copied ? (
-          <Check className="h-4 w-4 text-green-500" />
+          <Check className="h-4 w-4 text-success" />
         ) : (
           <Copy className="h-4 w-4" />
         )}
       </button>
 
-      <div className="whitespace-pre-wrap pr-12 font-mono text-sm leading-relaxed text-zinc-200">
+      <div className="whitespace-pre-wrap pr-12 font-sans text-sm leading-relaxed text-text-primary">
         {outputText}
       </div>
 
       {outputId && onRate && (
-        <div className="mt-6 flex items-center gap-2 border-t border-zinc-800 pt-4">
-          <span className="text-sm text-zinc-500">Rate this output:</span>
+        <div className="mt-6 flex items-center gap-2 border-t border-border-default pt-4">
+          <span className="font-mono text-xs uppercase tracking-wider text-text-muted">
+            Rate:
+          </span>
           {[1, 2, 3, 4, 5].map((star) => (
             <button
               key={star}
@@ -58,12 +62,13 @@ export function OutputPanel({ outputText, outputId, onRate }: OutputPanelProps) 
                 setRating(star);
                 onRate(star);
               }}
+              className="transition-transform duration-200 hover:scale-110"
             >
               <Star
                 className={`h-5 w-5 ${
                   star <= (hoverRating || rating)
-                    ? "fill-amber-500 text-amber-500"
-                    : "text-zinc-600"
+                    ? "fill-accent text-accent"
+                    : "text-text-disabled"
                 }`}
               />
             </button>

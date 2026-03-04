@@ -18,7 +18,7 @@ export default function DashboardLayout({
 
   if (status === "loading") {
     return (
-      <div className="flex min-h-screen items-center justify-center">
+      <div className="flex min-h-screen items-center justify-center bg-bg-primary">
         <Spinner size={32} />
       </div>
     );
@@ -29,15 +29,15 @@ export default function DashboardLayout({
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950">
+    <div className="min-h-screen bg-bg-primary">
       <Sidebar />
       <Header />
       <main
-        className={`min-h-[calc(100vh-4rem)] p-6 pb-20 transition-all lg:pb-6 ${
-          sidebarOpen ? "ml-64" : "ml-16"
+        className={`mx-auto min-h-[calc(100vh-4rem)] max-w-content p-8 pb-20 transition-all lg:pb-8 ${
+          sidebarOpen ? "ml-sidebar" : "ml-16"
         }`}
       >
-        {children}
+        <div className="tab-content">{children}</div>
       </main>
       <MobileNav />
     </div>

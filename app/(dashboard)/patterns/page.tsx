@@ -34,19 +34,18 @@ export default function PatternsPage() {
   if (!learnings?.length) {
     return (
       <div className="space-y-6">
-        <h1 className="text-2xl font-bold text-zinc-100">Patterns</h1>
         <Card className="flex flex-col items-center gap-4 py-16 text-center">
-          <Rss className="h-12 w-12 text-zinc-600" />
-          <h2 className="text-xl font-semibold text-zinc-300">
+          <Rss className="h-12 w-12 text-text-disabled" />
+          <h2 className="font-mono text-lg font-semibold uppercase tracking-wider text-text-secondary">
             No patterns yet
           </h2>
-          <p className="max-w-md text-sm text-zinc-500">
+          <p className="max-w-md text-sm text-text-muted">
             Start adding learnings to see patterns emerge. The more data you
             feed, the smarter the engine gets.
           </p>
           <Link
             href="/feed"
-            className="text-sm font-medium text-amber-500 hover:text-amber-400"
+            className="font-mono text-sm font-medium uppercase tracking-wider text-accent hover:text-accent-hover"
           >
             Go to Learning Feed
           </Link>
@@ -69,7 +68,6 @@ export default function PatternsPage() {
     (l) => l.type === "PERFORMANCE"
   ).length;
 
-  // Calculate average rating from outputs
   const ratedOutputs = (outputs ?? []).filter((o) => o.rating !== null);
   const avgRating =
     ratedOutputs.length > 0
@@ -79,8 +77,6 @@ export default function PatternsPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-zinc-100">Patterns</h1>
-
       <SummaryStats
         totalLearnings={learnings.length}
         verticalsActive={verticalsActive}

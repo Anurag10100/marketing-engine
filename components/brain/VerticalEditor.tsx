@@ -46,7 +46,7 @@ export function VerticalEditor({
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-zinc-100">
+        <h3 className="font-mono text-sm font-semibold uppercase tracking-wider text-text-primary">
           Vertical Contexts
         </h3>
         {isAdmin && (
@@ -68,10 +68,10 @@ export function VerticalEditor({
             <button
               key={v.value}
               onClick={() => setSelected(v.value)}
-              className={`w-full rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors ${
+              className={`w-full rounded-[6px] px-3 py-2 text-left text-sm font-medium transition-all duration-200 ${
                 selected === v.value
-                  ? "bg-amber-500/10 text-amber-500"
-                  : "text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100"
+                  ? "bg-[rgba(245,158,11,0.15)] text-accent"
+                  : "text-text-secondary hover:bg-bg-surface hover:text-text-primary"
               }`}
             >
               {v.label}
@@ -88,10 +88,9 @@ export function VerticalEditor({
             className="min-h-[350px] font-mono text-sm"
           />
           {verticalData?.updatedAt && (
-            <p className="mt-2 text-xs text-zinc-500">
-              Last updated{" "}
+            <p className="mt-2 font-mono text-[11px] text-text-muted">
               {new Date(verticalData.updatedAt).toLocaleDateString()}
-              {verticalData.updatedBy && ` by ${verticalData.updatedBy}`}
+              {verticalData.updatedBy && ` — ${verticalData.updatedBy}`}
             </p>
           )}
         </div>

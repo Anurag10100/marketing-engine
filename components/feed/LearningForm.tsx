@@ -34,9 +34,9 @@ export function LearningForm({ onSubmit, loading }: LearningFormProps) {
 
   return (
     <div className="space-y-5">
-      {/* Vertical selector — multi-select style but single for form */}
+      {/* Vertical selector */}
       <div>
-        <label className="mb-2 block text-sm font-medium text-zinc-400">
+        <label className="mb-2 block font-mono text-xs font-medium uppercase tracking-wider text-text-muted">
           Vertical
         </label>
         <div className="flex flex-wrap gap-2">
@@ -44,10 +44,10 @@ export function LearningForm({ onSubmit, loading }: LearningFormProps) {
             <button
               key={v.value}
               onClick={() => setVertical(v.value)}
-              className={`rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
+              className={`rounded-chip px-3 py-1.5 font-mono text-[11px] font-medium uppercase tracking-wider transition-all duration-200 ${
                 vertical === v.value
-                  ? "bg-amber-500 text-zinc-900"
-                  : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700"
+                  ? "bg-accent text-bg-primary"
+                  : "bg-bg-surface text-text-muted border border-border-default hover:border-border-active"
               }`}
             >
               {v.label}
@@ -58,7 +58,7 @@ export function LearningForm({ onSubmit, loading }: LearningFormProps) {
 
       {/* Learning type selector */}
       <div>
-        <label className="mb-2 block text-sm font-medium text-zinc-400">
+        <label className="mb-2 block font-mono text-xs font-medium uppercase tracking-wider text-text-muted">
           Type
         </label>
         <div className="flex flex-wrap gap-2">
@@ -66,13 +66,13 @@ export function LearningForm({ onSubmit, loading }: LearningFormProps) {
             <button
               key={lt.value}
               onClick={() => setType(lt.value)}
-              className={`rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
+              className={`rounded-chip px-3 py-1.5 font-mono text-[11px] font-medium transition-all duration-200 ${
                 type === lt.value
                   ? "ring-1"
                   : "opacity-60 hover:opacity-100"
               }`}
               style={{
-                backgroundColor: `${lt.color}20`,
+                backgroundColor: `${lt.color}15`,
                 color: lt.color,
                 ...(type === lt.value
                   ? { ringColor: lt.color }
@@ -102,7 +102,7 @@ export function LearningForm({ onSubmit, loading }: LearningFormProps) {
         onClick={handleSubmit}
         disabled={!content.trim()}
         loading={loading}
-        className={success ? "!bg-green-600" : ""}
+        className={success ? "success-flash !bg-success" : ""}
       >
         {success ? (
           <>

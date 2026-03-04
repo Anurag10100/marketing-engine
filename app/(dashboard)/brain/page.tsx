@@ -25,18 +25,16 @@ export default function BrainPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-zinc-100">Brand Brain</h1>
-
       {/* Tab switcher */}
-      <div className="flex gap-1 rounded-lg bg-zinc-900 p-1">
+      <div className="flex gap-1 rounded-[6px] border border-border-default bg-bg-elevated p-1">
         {(["core", "verticals"] as const).map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
+            className={`rounded-[4px] px-4 py-2 font-mono text-xs font-medium uppercase tracking-wider transition-all duration-150 ${
               activeTab === tab
-                ? "bg-zinc-800 text-zinc-100"
-                : "text-zinc-500 hover:text-zinc-300"
+                ? "bg-bg-surface text-text-primary"
+                : "text-text-muted hover:text-text-secondary"
             }`}
           >
             {tab === "core" ? "Core Brand Knowledge" : "Vertical Contexts"}
@@ -44,26 +42,28 @@ export default function BrainPage() {
         ))}
       </div>
 
-      {activeTab === "core" ? (
-        <CoreBrainEditor
-          corePrompt={brain.corePrompt}
-          version={brain.version}
-          updatedAt={brain.updatedAt}
-          updatedBy={brain.updatedBy}
-          isAdmin={isAdmin}
-          onSave={(corePrompt) => update.mutate({ corePrompt })}
-          saving={update.isPending}
-        />
-      ) : (
-        <VerticalEditor
-          verticals={brain.verticals}
-          isAdmin={isAdmin}
-          onSave={(vertical, content) =>
-            update.mutate({ vertical, content })
-          }
-          saving={update.isPending}
-        />
-      )}
+      <div className="tab-content">
+        {activeTab === "core" ? (
+          <CoreBrainEditor
+            corePrompt={brain.corePrompt}
+            version={brain.version}
+            updatedAt={brain.updatedAt}
+            updatedBy={brain.updatedBy}
+            isAdmin={isAdmin}
+            onSave={(corePrompt) => update.mutate({ corePrompt })}
+            saving={update.isPending}
+          />
+        ) : (
+          <VerticalEditor
+            verticals={brain.verticals}
+            isAdmin={isAdmin}
+            onSave={(vertical, content) =>
+              update.mutate({ vertical, content })
+            }
+            saving={update.isPending}
+          />
+        )}
+      </div>
     </div>
   );
 }

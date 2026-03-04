@@ -9,7 +9,6 @@ interface PatternInsightProps {
 }
 
 export function PatternInsight({ learnings }: PatternInsightProps) {
-  // Filter PERFORMANCE learnings that mention open rate / %
   const performanceLearnings = learnings
     .filter(
       (l) =>
@@ -25,8 +24,8 @@ export function PatternInsight({ learnings }: PatternInsightProps) {
   return (
     <Card>
       <div className="mb-4 flex items-center gap-2">
-        <TrendingUp className="h-5 w-5 text-green-500" />
-        <h3 className="text-lg font-semibold text-zinc-100">
+        <TrendingUp className="h-5 w-5 text-success" />
+        <h3 className="font-mono text-sm font-semibold uppercase tracking-wider text-text-primary">
           Top Performing Patterns
         </h3>
       </div>
@@ -35,9 +34,9 @@ export function PatternInsight({ learnings }: PatternInsightProps) {
         {performanceLearnings.map((l, i) => (
           <div
             key={l.id}
-            className="flex items-start gap-3 text-sm text-zinc-300"
+            className="flex items-start gap-3 text-sm text-text-secondary"
           >
-            <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-green-500/10 text-xs font-bold text-green-500">
+            <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-success/10 font-mono text-[11px] font-bold text-success">
               {i + 1}
             </span>
             <p>{l.content}</p>

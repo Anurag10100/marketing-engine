@@ -21,25 +21,29 @@ export function SummaryStats({
       label: "Total Learnings",
       value: totalLearnings,
       icon: BookOpen,
-      color: "text-blue-500",
+      color: "text-info",
+      bg: "bg-info/10",
     },
     {
       label: "Verticals Active",
       value: verticalsActive,
       icon: Globe,
-      color: "text-purple-500",
+      color: "text-purple-400",
+      bg: "bg-purple-400/10",
     },
     {
       label: "Performance Data",
       value: performanceCount,
       icon: TrendingUp,
-      color: "text-green-500",
+      color: "text-success",
+      bg: "bg-success/10",
     },
     {
-      label: "Avg Output Rating",
+      label: "Avg Rating",
       value: avgRating ? avgRating.toFixed(1) : "—",
       icon: Star,
-      color: "text-amber-500",
+      color: "text-accent",
+      bg: "bg-accent/10",
     },
   ];
 
@@ -47,12 +51,12 @@ export function SummaryStats({
     <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
       {stats.map((stat) => (
         <Card key={stat.label} className="flex items-center gap-4">
-          <div className={`rounded-lg bg-zinc-800 p-3 ${stat.color}`}>
+          <div className={`rounded-[6px] p-3 ${stat.bg} ${stat.color}`}>
             <stat.icon className="h-5 w-5" />
           </div>
           <div>
-            <p className="text-2xl font-bold text-zinc-100">{stat.value}</p>
-            <p className="text-xs text-zinc-500">{stat.label}</p>
+            <p className="font-mono text-2xl font-bold text-text-primary">{stat.value}</p>
+            <p className="font-mono text-[11px] uppercase tracking-wider text-text-muted">{stat.label}</p>
           </div>
         </Card>
       ))}

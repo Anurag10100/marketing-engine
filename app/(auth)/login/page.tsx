@@ -6,18 +6,18 @@ import { Sparkles } from "lucide-react";
 
 export default function LoginPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-950">
+    <div className="flex min-h-screen items-center justify-center bg-bg-primary">
       <div className="w-full max-w-sm space-y-8 text-center">
-        <div className="space-y-2">
+        <div className="space-y-3">
           <div className="flex justify-center">
-            <div className="rounded-2xl bg-amber-500/10 p-4">
-              <Sparkles className="h-10 w-10 text-amber-500" />
+            <div className="rounded-card bg-[rgba(245,158,11,0.15)] p-4">
+              <Sparkles className="h-10 w-10 text-accent" />
             </div>
           </div>
-          <h1 className="text-3xl font-bold text-zinc-100">
+          <h1 className="font-mono text-2xl font-bold uppercase tracking-wider text-text-primary">
             Elets Brand Engine
           </h1>
-          <p className="text-sm text-zinc-500">
+          <p className="text-sm text-text-muted">
             AI-powered content generation that learns from every interaction
           </p>
         </div>
@@ -30,7 +30,7 @@ export default function LoginPage() {
           Sign in with Google
         </Button>
 
-        <p className="text-xs text-zinc-600">
+        <p className="font-mono text-[11px] uppercase tracking-wider text-text-disabled">
           Access restricted to authorised Elets email domains
         </p>
       </div>

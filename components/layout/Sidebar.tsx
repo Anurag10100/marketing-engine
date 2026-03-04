@@ -8,6 +8,7 @@ import {
   Rss,
   BarChart3,
   History,
+  Settings,
   ChevronLeft,
 } from "lucide-react";
 import { useUIStore } from "@/store/ui";
@@ -26,20 +27,20 @@ export function Sidebar() {
 
   return (
     <aside
-      className={`fixed left-0 top-0 z-40 flex h-screen flex-col border-r border-zinc-800 bg-zinc-950 transition-all duration-300 ${
-        sidebarOpen ? "w-64" : "w-16"
+      className={`fixed left-0 top-0 z-40 flex h-screen flex-col border-r border-border-default bg-bg-primary transition-all duration-300 ${
+        sidebarOpen ? "w-sidebar" : "w-16"
       }`}
     >
       {/* Logo */}
-      <div className="flex h-16 items-center justify-between border-b border-zinc-800 px-4">
+      <div className="flex h-16 items-center justify-between border-b border-border-default px-4">
         {sidebarOpen && (
-          <span className="text-lg font-bold text-amber-500">
-            Elets Engine
+          <span className="font-mono text-base font-bold text-accent">
+            ELETS ENGINE
           </span>
         )}
         <button
           onClick={toggleSidebar}
-          className="rounded-lg p-1.5 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100"
+          className="rounded-[6px] p-1.5 text-text-muted hover:bg-bg-surface hover:text-text-primary"
         >
           <ChevronLeft
             className={`h-5 w-5 transition-transform ${
@@ -57,10 +58,10 @@ export function Sidebar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
+              className={`flex items-center gap-3 rounded-[6px] px-3 py-2.5 text-sm font-medium transition-all duration-200 ${
                 isActive
-                  ? "bg-amber-500/10 text-amber-500"
-                  : "text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100"
+                  ? "bg-[rgba(245,158,11,0.15)] text-accent"
+                  : "text-text-secondary hover:bg-bg-surface hover:text-text-primary"
               }`}
             >
               <item.icon className="h-5 w-5 flex-shrink-0" />
@@ -69,6 +70,14 @@ export function Sidebar() {
           );
         })}
       </nav>
+
+      {/* Settings — bottom */}
+      <div className="border-t border-border-default p-3">
+        <button className="flex w-full items-center gap-3 rounded-[6px] px-3 py-2.5 text-sm font-medium text-text-muted transition-all duration-200 hover:bg-bg-surface hover:text-text-primary">
+          <Settings className="h-5 w-5 flex-shrink-0" />
+          {sidebarOpen && <span>Settings</span>}
+        </button>
+      </div>
     </aside>
   );
 }

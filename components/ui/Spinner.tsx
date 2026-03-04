@@ -10,7 +10,7 @@ interface SpinnerProps {
 export function Spinner({ size = 24, className = "" }: SpinnerProps) {
   return (
     <Loader2
-      className={`animate-spin text-amber-500 ${className}`}
+      className={`animate-spin text-accent ${className}`}
       size={size}
     />
   );

@@ -43,10 +43,10 @@ export function TaskTypeGrid({ value, onChange }: TaskTypeGridProps) {
           <button
             key={task.value}
             onClick={() => onChange(task.value)}
-            className={`flex items-center gap-3 rounded-lg px-4 py-3 text-left text-sm font-medium transition-colors ${
+            className={`flex items-center gap-3 rounded-[6px] px-4 py-3 text-left text-sm font-medium transition-all duration-200 ${
               isActive
-                ? "bg-amber-500/10 text-amber-500 ring-1 ring-amber-500/30"
-                : "bg-zinc-800/50 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100"
+                ? "bg-[rgba(245,158,11,0.15)] text-accent border border-border-active"
+                : "bg-bg-elevated text-text-secondary border border-border-default hover:border-border-active hover:text-text-primary"
             }`}
           >
             {Icon && <Icon className="h-4 w-4 flex-shrink-0" />}

@@ -67,13 +67,11 @@ export default function GeneratePage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-zinc-100">Generate Content</h1>
-
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Left: Controls */}
         <div className="space-y-6">
           <div>
-            <label className="mb-2 block text-sm font-medium text-zinc-400">
+            <label className="mb-2 block font-mono text-xs font-medium uppercase tracking-wider text-text-muted">
               Vertical
             </label>
             <VerticalSelector
@@ -88,7 +86,7 @@ export default function GeneratePage() {
           />
 
           <div>
-            <label className="mb-2 block text-sm font-medium text-zinc-400">
+            <label className="mb-2 block font-mono text-xs font-medium uppercase tracking-wider text-text-muted">
               Task Type
             </label>
             <TaskTypeGrid
@@ -122,7 +120,7 @@ export default function GeneratePage() {
           {/* Recent outputs */}
           {recentOutputs.length > 0 && (
             <div className="space-y-2">
-              <h3 className="text-sm font-medium text-zinc-500">
+              <h3 className="font-mono text-xs font-medium uppercase tracking-wider text-text-muted">
                 Recent Outputs
               </h3>
               {recentOutputs.map((output) => (
@@ -132,18 +130,18 @@ export default function GeneratePage() {
                     setOutputText(output.outputText);
                     setOutputId(output.id);
                   }}
-                  className="w-full rounded-lg border border-zinc-800 bg-zinc-900 p-3 text-left transition-colors hover:border-zinc-700"
+                  className="w-full rounded-[6px] border border-border-default bg-bg-surface p-3 text-left transition-all duration-200 hover:border-border-active"
                 >
-                  <div className="flex items-center gap-2 text-xs text-zinc-500">
+                  <div className="flex items-center gap-2 font-mono text-[11px] text-text-muted">
                     <span>{output.vertical}</span>
-                    <span>·</span>
+                    <span className="text-text-disabled">·</span>
                     <span>{output.taskType}</span>
-                    <span>·</span>
+                    <span className="text-text-disabled">·</span>
                     <span>
                       {new Date(output.createdAt).toLocaleTimeString()}
                     </span>
                   </div>
-                  <p className="mt-1 truncate text-sm text-zinc-400">
+                  <p className="mt-1 truncate text-sm text-text-secondary">
                     {output.outputText.slice(0, 80)}...
                   </p>
                 </button>
