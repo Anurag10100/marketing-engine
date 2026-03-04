@@ -4,6 +4,8 @@ import { z } from "zod/v4";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { anthropic, buildSystemPrompt } from "@/lib/anthropic";
+
+export const dynamic = "force-dynamic";
 import { USER_MESSAGE_TEMPLATES } from "@/lib/constants";
 import type { TaskType, Learning } from "@/types";
 
